@@ -1,0 +1,49 @@
+[project]
+name = "data-ingestion-service"
+version = "0.1.0"
+description = "Service for fetching travel data from external sources"
+requires-python = ">=3.11"
+dependencies = [
+    # Web framework
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "httpx>=0.25.0",
+    "python-multipart>=0.0.6",
+    # Web scraping and data processing
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "html2text>=2020.1.16",  # For converting HTML to Markdown (Wikipedia, drone-laws.com)
+    "selenium>=4.15.0",
+    "playwright>=1.40.0",
+    # Data processing
+    "aiohttp>=3.9.0",
+]
+
+[tool.uv]
+package = false  # This is an application, not a distributable package
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.11.0",
+    "ruff>=0.1.6",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
