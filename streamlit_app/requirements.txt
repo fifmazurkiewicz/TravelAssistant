@@ -1,0 +1,7 @@
+streamlit>=1.28.0
+httpx>=0.24.0
+
+# Dependencies for shared/config.py
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
