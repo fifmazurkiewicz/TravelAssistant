@@ -1,0 +1,43 @@
+# Knowledge Base Service Requirements
+
+# Web framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+httpx>=0.25.0
+python-multipart>=0.0.6
+
+# Database
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.9
+
+# Document processing
+pypdf>=3.17.0
+python-docx>=1.1.0
+
+# Embeddings
+sentence-transformers>=2.2.2
+
+# PyTorch - required for sentence-transformers (embedding models) and reranking
+# Note: torch, torchvision, and torchaudio should be installed separately based on your system (CPU/GPU)
+# For CPU: pip install torch torchvision torchaudio
+# For CUDA 11.8: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# For CUDA 12.1: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# For CUDA 12.4: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+torch>=2.0.0  # PyTorch - required for embedding and reranking models
+torchvision>=0.15.0  # Required by transformers for image processing
+torchaudio>=2.0.0  # Required for complete PyTorch ecosystem
+
+# Reranking (optional - only needed if RERANKER_ENABLED=true)
+transformers>=4.30.0  # Required for reranking models (CrossEncoder) - requires torchvision
+
+# LLM (OpenRouter/Gemini)
+openai>=1.0.0  # Required for OpenRouter API communication
+
+# Vector databases (all supported, use VECTOR_DB_TYPE to choose)
+qdrant-client>=1.7.0
+fastembed==0.7.3  # Required for Qdrant sparse vector (BM25) generation
+weaviate-client>=4.0.0
+chromadb>=0.4.18
+
